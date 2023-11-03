@@ -37,6 +37,7 @@ export function InputDemo({
 	items = [],
 }: InputInterface) {
 	const [isHovered, setIsHovered] = useState(false);
+	const [currentState, setCurrentState] = useState(state);
 	let inputComponent: React.ReactNode | null = null;
 
 	switch (type) {
@@ -61,28 +62,40 @@ export function InputDemo({
 		setIsHovered(false);
 	};
 
+	const handlePenClick = () => {
+		if (currentState === "readonly") {
+			setCurrentState("edit");
+		}
+	};
+
+	const handleCheckClick = () => {
+		if (currentState === "edit") {
+			setCurrentState("readonly");
+		}
+	};
+
 	return (
 		<div
 			className="flex items-center gap-x-3"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
 			<p className="w-1/2 text-left">{label}</p>
-			{state != "readonly" ? (
+			{currentState != "readonly" ? (
 				inputComponent
 			) : (
 				<p className="w-full">{placeholder}</p>
 			)}
 
 			<div className="flex w-1/5">
-				{state === "edit" && (
+				{currentState === "edit" && (
 					<>
-						<Check />
+						<Check onClick={handleCheckClick} />
 						<X />
 					</>
 				)}
-				{state === "readonly" && isHovered && (
+				{currentState === "readonly" && isHovered && (
 					<>
-						<Pen size={17} />
+						<Pen size={17} onClick={handlePenClick} />
 						<Clipboard size={17} />
 					</>
 				)}

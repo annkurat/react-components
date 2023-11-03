@@ -8,7 +8,7 @@ import {
 } from "src/components/ui/dropdown-menu";
 
 interface DropdownInterface {
-	placeholder: string;
+	placeholder?: string;
 	label?: string;
 	items: string[];
 }
