@@ -1,6 +1,6 @@
 export const PenIcon = () => (
 	<svg
-		width="18"
+		width="17"
 		height="18"
 		viewBox="0 0 23 23"
 		fill="none"

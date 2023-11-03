@@ -5,7 +5,6 @@ import { InputDemo } from "src/components/Input";
 
 function App() {
 	const genders = ["Male", "Female", "Other"];
-	const cities = ["Estonia", "Poland"];
 
 	return (
 		<div className="App">
@@ -15,29 +14,28 @@ function App() {
 			</header>
 			<main className="flex flex-col gap-4 text-left 2xl:w-1/6 xl:w-1/2 lg:w-1/2 w-full px-4">
 				<InputDemo
-					placeholder="Enter your name"
+					placeholder="Enter full name"
 					type="text-field"
 					label="Name"
 					state="new"
 				/>
 				<InputDemo
-					placeholder="Choose your gender"
+					placeholder="Select gender"
 					type="drop-down"
 					items={genders}
 					label="Gender"
 					state="new"
 				/>
 				<InputDemo
-					placeholder="Some value"
+					placeholder="100"
 					type="unit"
-					label="How much?"
+					label="Availability"
 					state="readonly"
 				/>
 				<InputDemo
-					placeholder="Seacrh city"
+					placeholder="Frontend developer"
 					type="drop-down"
-					label="City"
-					items={cities}
+					label="Job"
 					state="readonly"
 				/>
 				<SwitchDemo />

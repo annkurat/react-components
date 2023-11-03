@@ -5,7 +5,3 @@ export default {
 	title: "Switch",
 	tags: ["autodocs"],
 };
-
-export const Switch = {
-	args: {},
-};

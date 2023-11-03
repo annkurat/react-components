@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { Input } from "src/components/ui/input";
 import { DropdownMenuDemo } from "src/components/Dropdown";
-import { Percent, Check, X } from "lucide-react";
-import { PenIcon, CopyIcon } from "src/assets/images/icons.js";
+import { Percent } from "lucide-react";
 
 interface InputInterface {
 	state: string;
@@ -12,22 +10,45 @@ interface InputInterface {
 	items?: string[];
 }
 
-function TextInput({ placeholder }: { placeholder: string }) {
-	return <Input type="text" placeholder={placeholder} />;
+function TextInput({
+	placeholder,
+	state,
+}: {
+	placeholder: string;
+	state: string;
+}) {
+	return <Input type="text" state={state} placeholder={placeholder} />;
 }
 
 function DropdownInput({
 	items,
 	placeholder,
+	state,
 }: {
 	items: string[];
 	placeholder: string;
+	state: string;
 }) {
-	return <DropdownMenuDemo items={items} placeholder={placeholder} />;
+	return (
+		<DropdownMenuDemo items={items} state={state} placeholder={placeholder} />
+	);
 }
 
-function UnitInput({ placeholder }: { placeholder: string }) {
-	return <Input type="text" placeholder={placeholder} icon={<Percent />} />;
+function UnitInput({
+	placeholder,
+	state,
+}: {
+	placeholder: string;
+	state: string;
+}) {
+	return (
+		<Input
+			type="text"
+			placeholder={placeholder}
+			state={state}
+			icon={<Percent />}
+		/>
+	);
 }
 
 export function InputDemo({
@@ -37,77 +58,26 @@ export function InputDemo({
 	placeholder = "",
 	items = [],
 }: InputInterface) {
-	const [isHovered, setIsHovered] = useState(false);
-	const [currentState, setCurrentState] = useState(state);
 	let inputComponent = null;
 
 	switch (type) {
 		case "text-field":
-			inputComponent = <TextInput placeholder={placeholder} />;
+			inputComponent = <TextInput placeholder={placeholder} state={state} />;
 			break;
 		case "drop-down":
 			inputComponent = (
-				<DropdownInput items={items} placeholder={placeholder} />
+				<DropdownInput items={items} placeholder={placeholder} state={state} />
 			);
 			break;
 		case "unit":
-			inputComponent = <UnitInput placeholder={placeholder} />;
+			inputComponent = <UnitInput placeholder={placeholder} state={state} />;
 			break;
 	}
 
-	const handleMouseEnter = () => {
-		setIsHovered(true);
-	};
-
-	const handleMouseLeave = () => {
-		setIsHovered(false);
-	};
-
-	const handlePenClick = () => {
-		if (currentState === "readonly") {
-			setCurrentState("edit");
-		}
-	};
-
-	const handleCancelClick = () => {
-		if (currentState === "edit") {
-			setCurrentState("readonly");
-		}
-	};
-
 	return (
-		<div
-			className="flex items-center gap-x-3"
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}>
+		<div className="flex items-center gap-x-3 w-full">
 			<p className="w-1/2 text-left text-black font-bold">{label}</p>
-			{currentState !== "readonly" ? (
-				inputComponent
-			) : (
-				<p className="w-full text-black font-light">{placeholder}</p>
-			)}
-
-			<div className="flex w-1/5">
-				{currentState === "edit" && (
-					<>
-						<Check
-							className="text-green-secondary"
-							onClick={handleCancelClick}
-						/>
-						<X className="text-gray-primary" onClick={handleCancelClick} />
-					</>
-				)}
-				{currentState === "readonly" && isHovered && (
-					<>
-						<span className="mr-2" onClick={handlePenClick}>
-							<PenIcon />
-						</span>
-						<span>
-							<CopyIcon />
-						</span>
-					</>
-				)}
-			</div>
+			{inputComponent}
 		</div>
 	);
 }
