@@ -1,8 +1,8 @@
 {
 	"name": "react-components",
 	"version": "0.1.0",
-	"homepage": "https://annkurat.github.io/react-components",
 	"private": true,
+	"homepage": "https://annkurat.github.io/react-components",
 	"dependencies": {
 		"@radix-ui/react-dropdown-menu": "^2.0.6",
 		"@radix-ui/react-switch": "^1.0.3",
