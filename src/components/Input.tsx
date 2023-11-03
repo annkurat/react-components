@@ -43,7 +43,7 @@ function UnitInput({
 }) {
 	return (
 		<Input
-			type="text"
+			type="unit"
 			placeholder={placeholder}
 			state={state}
 			icon={<Percent />}

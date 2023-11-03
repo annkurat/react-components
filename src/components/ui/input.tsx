@@ -40,7 +40,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}>
 				{currentState === "readonly" ? (
-					<p className="text-black">{placeholder}</p>
+					<p className="text-black">
+						{placeholder}
+						{type === "unit" && "%"}
+					</p>
 				) : (
 					<div className="relative w-full ">
 						<input
