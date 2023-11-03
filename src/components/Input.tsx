@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Input } from "src/components/ui/input";
 import { DropdownMenuDemo } from "src/components/Dropdown";
-import { Percent, Check, X, Pen, Clipboard } from "lucide-react";
+import { Percent, Check, X } from "lucide-react";
+import { PenIcon, CopyIcon } from "src/assets/images/icons.js";
 
 interface InputInterface {
 	state: string;
@@ -79,24 +80,31 @@ export function InputDemo({
 			className="flex items-center gap-x-3"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
-			<p className="w-1/2 text-left">{label}</p>
+			<p className="w-1/2 text-left text-black font-bold">{label}</p>
 			{currentState !== "readonly" ? (
 				inputComponent
 			) : (
-				<p className="w-full">{placeholder}</p>
+				<p className="w-full text-black font-light">{placeholder}</p>
 			)}
 
 			<div className="flex w-1/5">
 				{currentState === "edit" && (
 					<>
-						<Check onClick={handleCancelClick} />
-						<X onClick={handleCancelClick} />
+						<Check
+							className="text-green-secondary"
+							onClick={handleCancelClick}
+						/>
+						<X className="text-gray-primary" onClick={handleCancelClick} />
 					</>
 				)}
 				{currentState === "readonly" && isHovered && (
 					<>
-						<Pen size={17} onClick={handlePenClick} />
-						<Clipboard size={17} />
+						<span className="mr-2" onClick={handlePenClick}>
+							<PenIcon />
+						</span>
+						<span>
+							<CopyIcon />
+						</span>
 					</>
 				)}
 			</div>

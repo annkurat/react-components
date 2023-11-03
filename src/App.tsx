@@ -13,7 +13,7 @@ function App() {
 				<img src={logo} className="App-logo" alt="logo" />
 				<p>React Components</p>
 			</header>
-			<main className="flex flex-col gap-4 text-left 2xl:w-1/6 xl:w-1/3 lg:w-1/2 w-full px-4">
+			<main className="flex flex-col gap-4 text-left 2xl:w-1/6 xl:w-1/2 lg:w-1/2 w-full px-4">
 				<InputDemo
 					placeholder="Enter your name"
 					type="text-field"
