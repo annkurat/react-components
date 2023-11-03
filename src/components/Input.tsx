@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Input } from "src/components/ui/input";
 import { DropdownMenuDemo } from "src/components/Dropdown";
 import { Percent, Check, X, Pen, Clipboard } from "lucide-react";
@@ -38,7 +38,7 @@ export function InputDemo({
 }: InputInterface) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [currentState, setCurrentState] = useState(state);
-	let inputComponent: React.ReactNode | null = null;
+	let inputComponent = null;
 
 	switch (type) {
 		case "text-field":
