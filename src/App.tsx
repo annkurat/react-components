@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from "src/assets/images/logo.svg";
+import "src/assets/styles/App.css";
+import { SwitchDemo } from "src/components/Switch";
+import { InputDemo } from "src/components/Input";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const items = ["Male", "Female", "Other"];
+
+	return (
+		<div className="App">
+			<header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+				<p>React Components</p>
+			</header>
+			<main className="flex flex-col gap-4 text-left 2xl:w-1/6 xl:w-1/3 lg:w-1/2 w-full px-4">
+				<InputDemo
+					placeholder="Enter your name"
+					type="text-field"
+					label="Name"
+					state="new"
+				/>
+				<InputDemo
+					placeholder="Choose your gender"
+					type="drop-down"
+					items={items}
+					label="Gender"
+					state="new"
+				/>
+				<InputDemo
+					placeholder="Some value"
+					type="unit"
+					label="How much?"
+					state="readonly"
+				/>
+				<InputDemo
+					placeholder="Seacrh city"
+					type="drop-down"
+					label="City"
+					state="readonly"
+				/>
+				<SwitchDemo />
+			</main>
+		</div>
+	);
 }
 
 export default App;
