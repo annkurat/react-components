@@ -80,7 +80,7 @@ export function InputDemo({
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
 			<p className="w-1/2 text-left">{label}</p>
-			{currentState != "readonly" ? (
+			{currentState !== "readonly" ? (
 				inputComponent
 			) : (
 				<p className="w-full">{placeholder}</p>
