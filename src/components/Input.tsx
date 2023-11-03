@@ -68,7 +68,7 @@ export function InputDemo({
 		}
 	};
 
-	const handleCheckClick = () => {
+	const handleCancelClick = () => {
 		if (currentState === "edit") {
 			setCurrentState("readonly");
 		}
@@ -89,8 +89,8 @@ export function InputDemo({
 			<div className="flex w-1/5">
 				{currentState === "edit" && (
 					<>
-						<Check onClick={handleCheckClick} />
-						<X />
+						<Check onClick={handleCancelClick} />
+						<X onClick={handleCancelClick} />
 					</>
 				)}
 				{currentState === "readonly" && isHovered && (

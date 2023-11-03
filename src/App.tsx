@@ -1,10 +1,11 @@
 import logo from "src/assets/images/logo.svg";
-import "src/assets/styles/App.css";
+import "src/assets/styles/app.css";
 import { SwitchDemo } from "src/components/Switch";
 import { InputDemo } from "src/components/Input";
 
 function App() {
-	const items = ["Male", "Female", "Other"];
+	const genders = ["Male", "Female", "Other"];
+	const cities = ["Estonia", "Poland"];
 
 	return (
 		<div className="App">
@@ -22,7 +23,7 @@ function App() {
 				<InputDemo
 					placeholder="Choose your gender"
 					type="drop-down"
-					items={items}
+					items={genders}
 					label="Gender"
 					state="new"
 				/>
@@ -36,6 +37,7 @@ function App() {
 					placeholder="Seacrh city"
 					type="drop-down"
 					label="City"
+					items={cities}
 					state="readonly"
 				/>
 				<SwitchDemo />

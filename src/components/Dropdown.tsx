@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -18,19 +19,27 @@ export function DropdownMenuDemo({
 	label,
 	items,
 }: DropdownInterface) {
+	const [selectedItem, setSelectedItem] = useState("");
+
+	const handleItemClick = (item: string) => {
+		setSelectedItem(item);
+	};
+
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger>{placeholder}</DropdownMenuTrigger>
+			<DropdownMenuTrigger>{selectedItem || placeholder}</DropdownMenuTrigger>
 			<DropdownMenuContent>
 				{label ? (
 					<>
-						<DropdownMenuLabel>{label}</DropdownMenuLabel>{" "}
+						<DropdownMenuLabel>{label}</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 					</>
 				) : null}
 
 				{items.map((item, index) => (
-					<DropdownMenuItem key={index}>{item}</DropdownMenuItem>
+					<DropdownMenuItem key={index} onClick={() => handleItemClick(item)}>
+						{item}
+					</DropdownMenuItem>
 				))}
 			</DropdownMenuContent>
 		</DropdownMenu>
